@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +36,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tailwind',
+    'main',
+    'django_browser_reload',
 ]
+
+TAILWIND_APP_NAME = 'main'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'la_ruche_citoyenne.urls'
@@ -54,7 +65,7 @@ ROOT_URLCONF = 'la_ruche_citoyenne.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
